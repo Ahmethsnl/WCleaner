@@ -37,3 +37,5 @@
 3. **Temizleme İşlemini Takip Edin:**
     
     * Temizleme işlemi sırasında terminalde ilerleme göstergesi göreceksiniz. İşlem tamamlandığında, temizleme öncesi ve sonrası disk alanı bilgileri görüntülenecektir.
+4. **Wclean**
+   * installer.sh komutunu bir kere çalıştırdıktan sonra *wclean* olarak bir alias tanımlanır. Daha açıklayıcı olmak gerekirse terminale yalnızca "*wclean*" yazarak scripti çalıştırabilirsiniz.
