@@ -25,8 +25,6 @@ function print_disk_space {
 }
 
 function clean {
-  echo -e "\n Silinen Dosyalar"
-  du -sh ~/.cache ~/.local/share/Trash
   read -rp "Önbellek ve çöp kutusunu temizlemek istediğinize emin misiniz? (y/n) " confirm
   case "${confirm,,}" in
     y|yes)
@@ -48,11 +46,26 @@ function clean {
     "$HOME/.local/share/Trash"
   )
 
+  echo -e "\n🧹 Silinen Dosyalar:"
+  
   for dir in "${CACHE_DIRS[@]}"; do
     if [[ -d "$dir" ]]; then
       find "$dir" -mindepth 1 -print -delete 2>/dev/null
     fi
   done
+
+  # Geçici dosyaları silerken dikkat edin
+  echo -e "\n⚠️ Geçici dosyaları silmek istiyor musunuz?"
+  read -rp "Boş dosyaları silmek istiyor musunuz? (y/n) " confirm_tmp
+  case "${confirm_tmp,,}" in
+    y|yes)
+      echo "Geçici dosyalar siliniyor..."
+      find /tmp -mindepth 1 -type f -print -delete 2>/dev/null
+      ;;
+    *)
+      echo "Geçici dosyalar silinmedi."
+      ;;
+  esac
 
   find "$HOME/.cache/" -type f \( -name "*.log" -o -name "*.tmp" -o -name "*.cache" \) ! -name "important.log" -print -delete
   echo -e "\n✅ Temizlik tamamlandı!"
