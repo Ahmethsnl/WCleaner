@@ -20,7 +20,7 @@ BASE_DIR="$HOME"
 
 function print_disk_space {
   local message=$1
-  local free_space=$(df -h "$BASE_DIR" | awk 'NR==2 {print $4}')
+  local free_space=$(df -h --output=avail "$BASE_DIR" | tail -1)
   echo "$message: $free_space"
 }
 
@@ -37,26 +37,30 @@ function clean {
   esac
 
   CACHE_DIRS=(
-    "$BASE_DIR/.var/app/com.visualstudio.code/cache/vscode-cpptools/*"
+    "$BASE_DIR/.var/app/com.visualstudio.code/cache/vscode-cpptools"
     "$BASE_DIR/.var/app/com.visualstudio.code/cache/tmp"
     "$BASE_DIR/.var/app/com.google.Chrome/cache"
-    "$BASE_DIR/.var/app/com.brave.Browser/cache/*"
-    "$BASE_DIR/.var/app/org.mozilla.firefox/cache/*"
-    "$BASE_DIR/.var/app/com.opera.Opera/cache/*"
-    "$HOME/.local/share/Trash/*"
+    "$BASE_DIR/.var/app/com.brave.Browser/cache"
+    "$BASE_DIR/.var/app/org.mozilla.firefox/cache"
+    "$BASE_DIR/.var/app/com.opera.Opera/cache"
+    "$HOME/.local/share/Trash"
   )
 
   for dir in "${CACHE_DIRS[@]}"; do
-    [[ -d "$dir" || -f "$dir" ]] && rm -rf "$dir" &>/dev/null
+    if [[ -d "$dir" ]]; then
+      find "$dir" -mindepth 1 -print -delete 2>/dev/null
+    fi
   done
 
-  find "$HOME/.cache/" -type f \( -name "*.log" -o -name "*.tmp" -o -name "*.cache" \) -delete
+  find "$HOME/.cache/" -type f \( -name "*.log" -o -name "*.tmp" -o -name "*.cache" \) ! -name "important.log" -print -delete
   echo -e "\n✅ Temizlik tamamlandı!"
 }
 
 print_disk_space "Temizleme öncesi kullanılabilir disk alanı"
 clean
 print_disk_space "Temizleme sonrası kullanılabilir disk alanı"
+
+echo -e "\n🎉 WClean - WesaClean başarıyla tamamlandı! 🚀"
 
 echo -e "\n🎉 WClean - WesaClean başarıyla tamamlandı! 🚀"
 echo -e "\033[1;32mGitHub   ➜\033[0m  \033[4;36mahmethsnl\033[0m"
