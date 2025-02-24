@@ -53,6 +53,7 @@ function clean {
   done
 
   find "$HOME/.cache/" -type f \( -name "*.log" -o -name "*.tmp" -o -name "*.cache" \) ! -name "important.log" -print -delete
+  echo -e "\n Silinen Dosyalar"
   du -sh ~/.cache ~/.local/share/Trash
   echo -e "\n✅ Temizlik tamamlandı!"
 }
@@ -63,7 +64,6 @@ print_disk_space "Temizleme sonrası kullanılabilir disk alanı"
 
 echo -e "\n🎉 WClean - WesaClean başarıyla tamamlandı! 🚀"
 
-echo -e "\n🎉 WClean - WesaClean başarıyla tamamlandı! 🚀"
 echo -e "\033[1;32mGitHub   ➜\033[0m  \033[4;36mahmethsnl\033[0m"
 echo -e "\033[1;32m42 Slack ➜\033[0m  \033[4;36mahmsanli\033[0m"
 echo -e "             GitHub   ~> \033[4;1;34m34-ata\033[0m"
