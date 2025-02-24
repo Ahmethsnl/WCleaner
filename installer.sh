@@ -25,6 +25,7 @@ add_alias() {
 
 add_alias "wclean" "$BASH_RC"
 add_alias "wclean" "$ZSH_RC"
+rm -rf "$THIS_FOLDER"
 
 echo -e "\nTerminalinizi kapatıp açın veya '\033[1;34msource ~/.bashrc\033[0m' komutunu çalıştırın."
 echo -e "Bundan sonra '\033[1;34mwclean\033[0m' komutuyla WesaClean'i çalıştırabilirsiniz! 🚀"
