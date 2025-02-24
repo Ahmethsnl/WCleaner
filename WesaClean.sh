@@ -25,6 +25,8 @@ function print_disk_space {
 }
 
 function clean {
+  echo -e "\n Silinen Dosyalar"
+  du -sh ~/.cache ~/.local/share/Trash
   read -rp "Önbellek ve çöp kutusunu temizlemek istediğinize emin misiniz? (y/n) " confirm
   case "${confirm,,}" in
     y|yes)
@@ -43,8 +45,6 @@ function clean {
     "$BASE_DIR/.var/app/com.brave.Browser/cache"
     "$BASE_DIR/.var/app/org.mozilla.firefox/cache"
     "$BASE_DIR/.var/app/com.opera.Opera/cache"
-    echo -e "\n Silinen Dosyalar"
-    du -sh ~/.cache ~/.local/share/Trash
     "$HOME/.local/share/Trash"
   )
 
