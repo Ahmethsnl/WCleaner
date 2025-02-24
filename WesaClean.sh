@@ -30,8 +30,12 @@ function clean {
     y|yes)
       echo "Temizlik başlatılıyor..."
       ;;
-    *)
+    n|no)
       echo "Temizleme iptal edildi."
+      return
+      ;;
+    *)
+      echo "Geçersiz giriş! Temizleme iptal edildi."
       return
       ;;
   esac
@@ -62,8 +66,11 @@ function clean {
       echo "Geçici dosyalar siliniyor..."
       find /tmp -mindepth 1 -type f -print -delete 2>/dev/null
       ;;
-    *)
+    n|no)
       echo "Geçici dosyalar silinmedi."
+      ;;
+    *)
+      echo "Geçersiz giriş! Geçici dosyalar silinmedi."
       ;;
   esac
 
