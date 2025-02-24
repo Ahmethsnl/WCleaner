@@ -88,4 +88,4 @@ echo -e "\n🎉 WClean - WesaClean başarıyla tamamlandı! 🚀"
 echo -e "\033[1;32m GitHub   ➜\033[0m  \033[4;36mahmethsnl\033[0m"
 echo -e "\033[1;32m 42 Slack ➜\033[0m  \033[4;36mahmsanli\033[0m"
 
-echo -e "\033[1;32m Örnek aldığım repo ➜ https://github.com/34-ata/AFCleaner-42.git\033[0m"
+echo -e "\033[1;32m Örnek aldığım repo ➜\033[0m \033[4;36mhttps://github.com/34-ata/AFCleaner-42.git\033[0m"
