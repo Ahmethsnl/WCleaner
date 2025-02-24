@@ -53,6 +53,7 @@ function clean {
   done
 
   find "$HOME/.cache/" -type f \( -name "*.log" -o -name "*.tmp" -o -name "*.cache" \) ! -name "important.log" -print -delete
+  du -sh ~/.cache ~/.local/share/Trash
   echo -e "\n✅ Temizlik tamamlandı!"
 }
 
