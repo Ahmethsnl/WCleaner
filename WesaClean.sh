@@ -64,7 +64,7 @@ function clean {
   case "${confirm_tmp,,}" in
     y|yes)
       echo "Geçici dosyalar siliniyor..."
-      find /tmp -mindepth 1 -type f -print -delete 2>/dev/null
+      find /tmp -mindepth 1 -type f -delete 2>/dev/null
       ;;
     n|no)
       echo "Geçici dosyalar silinmedi."
