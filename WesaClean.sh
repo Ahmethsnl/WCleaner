@@ -43,6 +43,8 @@ function clean {
     "$BASE_DIR/.var/app/com.brave.Browser/cache"
     "$BASE_DIR/.var/app/org.mozilla.firefox/cache"
     "$BASE_DIR/.var/app/com.opera.Opera/cache"
+    echo -e "\n Silinen Dosyalar"
+    du -sh ~/.cache ~/.local/share/Trash
     "$HOME/.local/share/Trash"
   )
 
@@ -53,8 +55,6 @@ function clean {
   done
 
   find "$HOME/.cache/" -type f \( -name "*.log" -o -name "*.tmp" -o -name "*.cache" \) ! -name "important.log" -print -delete
-  echo -e "\n Silinen Dosyalar"
-  du -sh ~/.cache ~/.local/share/Trash
   echo -e "\n✅ Temizlik tamamlandı!"
 }
 
