@@ -4,17 +4,6 @@
 
 clear
 echo -e "\n\033[1;32m"
-#cat << "EOF"
-#{__        {__    {__   {__      {________      {_       {___     {__
-#{__        {__ {__   {__{__      {__           {_ __     {_ {__   {__
-#{__   {_   {__{__       {__      {__          {_  {__    {__ {__  {__
-#{__  {__   {__{__       {__      {______     {__   {__   {__  {__ {__
-#{__ {_ {__ {__{__       {__      {__        {______ {__  {__   {_ {__
-#{_ {_    {____ {__   {__{__      {__       {__       {__ {__    {_ __
-#{__        {__   {____  {________{________{__         {__{__      {__
-#EOF
-clear
-echo -e "\033[1;32m\n"
 echo -e "                 By: \033[33mWesaClean - WClean\033[0m\n"
 
 BASE_DIR="$HOME"
@@ -51,15 +40,29 @@ function clean {
     "$HOME/.local/share/Trash"
   )
 
-  echo -e "\n🧹 Silinen Dosyalar:"
-  
-  for dir in "${CACHE_DIRS[@]}"; do
-    if [[ -d "$dir" ]]; then
-      find "$dir" -mindepth 1 -print -delete 2>/dev/null
-    fi
-  done
+  read -rp "Silinen dosyaları görmek ister misiniz? (y/n) " show_files
+  case "${show_files,,}" in
+    y|yes)
+      echo -e "\n🧹 Silinen Dosyalar:"
+      for dir in "${CACHE_DIRS[@]}"; do
+        if [[ -d "$dir" ]]; then
+          find "$dir" -mindepth 1 -print -delete 2>/dev/null
+        fi
+      done
+      ;;
+    n|no)
+      for dir in "${CACHE_DIRS[@]}"; do
+        [[ -d "$dir" ]] && find "$dir" -mindepth 1 -delete 2>/dev/null
+      done
+      ;;
+    *)
+      echo "Geçersiz giriş! Varsayılan olarak dosyalar gösterilmeyecek."
+      for dir in "${CACHE_DIRS[@]}"; do
+        [[ -d "$dir" ]] && find "$dir" -mindepth 1 -delete 2>/dev/null
+      done
+      ;;
+  esac
 
-  # Geçici dosyaları silerken dikkat edin
   echo -e "\n⚠️ Geçici dosyaları silmek istiyor musunuz?"
   read -rp "Boş dosyaları silmek istiyor musunuz? (y/n) " confirm_tmp
   case "${confirm_tmp,,}" in
