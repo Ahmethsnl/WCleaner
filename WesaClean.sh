@@ -40,9 +40,9 @@ function clean {
     "$HOME/.local/share/Trash"
   )
 
-  read -rp "Silinen dosyaları görmek ister misiniz? (y/n) " show_files
+  read -rp "Silinen dosyaları görmek istemiyor musunuz (y/n) " show_files
   case "${show_files,,}" in
-    y|yes)
+    n|no)
       echo -e "\n🧹 Silinen Dosyalar:"
       for dir in "${CACHE_DIRS[@]}"; do
         if [[ -d "$dir" ]]; then
@@ -50,7 +50,7 @@ function clean {
         fi
       done
       ;;
-    n|no)
+    y|yes)
       for dir in "${CACHE_DIRS[@]}"; do
         [[ -d "$dir" ]] && find "$dir" -mindepth 1 -delete 2>/dev/null
       done
