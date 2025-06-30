@@ -34,12 +34,12 @@ add_alias() {
 BASH_RC="$BASE_DIR/.bashrc"
 ZSH_RC="$BASE_DIR/.zshrc"
 
-# .bash_completion source satırı ekle (varsa eklemeyi kontrol et)
-if ! grep -q "source $INSTALL_DIR/.bash_completion" "$BASH_RC"; then
-  echo "source $INSTALL_DIR/.bash_completion" >> "$BASH_RC"
-  echo ".bash_completion için source satırı eklendi: $BASH_RC"
+SOURCE_LINE="source $INSTALL_DIR/.bash_completion"
+if ! grep -Fxq "$SOURCE_LINE" "$BASH_RC"; then
+  echo "$SOURCE_LINE" >> "$BASH_RC"
+  echo ".bash_completion için source satırı eklendi."
 else
-  echo ".bash_completion için source satırı zaten mevcut: $BASH_RC"
+  echo ".bash_completion için source satırı zaten mevcut."
 fi
 
 # Alias ekle
