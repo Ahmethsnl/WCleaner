@@ -50,12 +50,12 @@ WCleaner (WesaClean), Linux sistemlerde kullanılmayan önbellekleri, çöp kutu
    
 ```bash
 WCleaner/
-├── README.md           # Bu döküman
-├── LICENSE             # MIT lisansı
-├── WesaClean.sh        # Ana bash script
-├── installer.sh        # Kurulum & alias scripti
+├── README.md           
+├── LICENSE             
+├── WesaClean.sh        
+├── installer.sh        
 ├── docs/
-│   └── usage.md        # Kullanım örnekleri ve açıklamalar
+│   └── usage.md        
 ├── assets/
-│   └── demo.gif        # Terminalde kullanım GIF’i
-├── .bash_completion    # Opsiyonel tamamlayıcı dosya (isteğe bağlı)
+│   └── demo.gif        
+├── .bash_completion    
