@@ -1,5 +1,14 @@
 #!/bin/bash
 
+if [[ $1 == "--help" ]]; then
+  echo "WCleaner - Sistem Temizleyici"
+  echo "Kullanım: wclean [--help] [--version]"
+  exit 0
+elif [[ $1 == "--version" ]]; then
+  echo "WCleaner version 1.0.0"
+  exit 0
+fi
+
 clear
 echo -e "\n\033[1;32m"
 echo -e "                 By: \033[33mWesaClean - WClean\033[0m\n"
