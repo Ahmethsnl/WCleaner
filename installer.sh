@@ -23,6 +23,8 @@ add_alias() {
   fi
 }
 
+echo "source ~/WClean/.bash_completion" >> ~/.bashrc
+
 add_alias "wclean" "$BASH_RC"
 add_alias "wclean" "$ZSH_RC"
 
