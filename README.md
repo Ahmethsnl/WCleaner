@@ -1,6 +1,24 @@
-# WCLEAN - WesaClean
+# 🧹 WCLEAN - WesaClean
 
 [![Last Commit](https://img.shields.io/github/last-commit/ahmethsnl/WCleaner?style=flat)](https://github.com/ahmethsnl/WCleaner/commits)
+
+WCleaner (WesaClean), Linux sistemlerde kullanılmayan önbellekleri, çöp kutularını ve geçici dosyaları temizlemek için geliştirilmiş basit bir komut satırı aracıdır.
+
+---
+
+## 📁 Klasör Yapısı
+
+   bash
+WCleaner/
+├── README.md           # Bu döküman
+├── LICENSE             # MIT lisansı
+├── WesaClean.sh        # Ana bash script
+├── installer.sh        # Kurulum & alias scripti
+├── docs/
+│   └── usage.md        # Kullanım örnekleri ve açıklamalar
+├── assets/
+│   └── demo.gif        # Terminalde kullanım GIF’i
+├── .bash_completion    # Opsiyonel tamamlayıcı dosya (isteğe bağlı)
 
 # WesaClean Script Açıklaması
 
