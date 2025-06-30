@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# WClean - WesaClean Cache & Trash Cleaner
-
 clear
 echo -e "\n\033[1;32m"
 echo -e "                 By: \033[33mWesaClean - WClean\033[0m\n"
@@ -22,11 +20,11 @@ function clean {
       ;;
     n|no)
       echo "Temizleme iptal edildi."
-      return
+      return 1
       ;;
     *)
       echo "Geçersiz giriş! Temizleme iptal edildi."
-      return
+      return 1
       ;;
   esac
 
@@ -40,31 +38,43 @@ function clean {
     "$HOME/.local/share/Trash"
   )
 
-  read -rp "Silinen dosyaları görmek istemiyor musunuz (y/n) " show_files
+  read -rp "Silinen dosyaları görmek ister misiniz? (y/n) " show_files
   case "${show_files,,}" in
-    n|no)
-      echo -e "\n🧹 Silinen Dosyalar:"
+    y|yes)
+      echo -e "\n🧹 Silinecek Dosyalar:"
       for dir in "${CACHE_DIRS[@]}"; do
         if [[ -d "$dir" ]]; then
-          find "$dir" -mindepth 1 -print -delete 2>/dev/null
+          find "$dir" -mindepth 1 -print
         fi
       done
       ;;
-    y|yes)
-      for dir in "${CACHE_DIRS[@]}"; do
-        [[ -d "$dir" ]] && find "$dir" -mindepth 1 -delete 2>/dev/null
-      done
+    n|no)
+      echo "Dosyalar listelenmeyecek."
       ;;
     *)
-      echo "Geçersiz giriş! Varsayılan olarak dosyalar gösterilmeyecek."
-      for dir in "${CACHE_DIRS[@]}"; do
-        [[ -d "$dir" ]] && find "$dir" -mindepth 1 -delete 2>/dev/null
-      done
+      echo "Geçersiz giriş! Dosyalar listelenmeyecek."
       ;;
   esac
 
-  echo -e "\n⚠️ Geçici dosyaları silmek istiyor musunuz?"
-  read -rp "Boş dosyaları silmek istiyor musunuz? (y/n) " confirm_tmp
+  read -rp "Temizlemeyi onaylıyor musunuz? (y/n) " final_confirm
+  case "${final_confirm,,}" in
+    y|yes)
+      echo -e "\nTemizlik yapılıyor..."
+      for dir in "${CACHE_DIRS[@]}"; do
+        [[ -d "$dir" ]] && find "$dir" -mindepth 1 -delete 2>/dev/null
+      done
+      ;;
+    n|no)
+      echo "Temizleme iptal edildi."
+      return 1
+      ;;
+    *)
+      echo "Geçersiz giriş! Temizleme iptal edildi."
+      return 1
+      ;;
+  esac
+
+  read -rp "Geçici dosyaları silmek istiyor musunuz? (y/n) " confirm_tmp
   case "${confirm_tmp,,}" in
     y|yes)
       echo "Geçici dosyalar siliniyor..."
@@ -83,8 +93,11 @@ function clean {
 }
 
 print_disk_space "Temizleme öncesi kullanılabilir disk alanı"
-clean
-print_disk_space "Temizleme sonrası kullanılabilir disk alanı"
+if clean; then
+  print_disk_space "Temizleme sonrası kullanılabilir disk alanı"
+else
+  echo "Temizlik işlemi gerçekleştirilmedi."
+fi
 
 echo -e "\n🎉 WClean - WesaClean başarıyla tamamlandı! 🚀"
 
