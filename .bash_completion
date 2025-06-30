@@ -10,4 +10,6 @@ _wclean_completion() {
     return 0
 }
 
+echo "source ~/WClean/.bash_completion" >> ~/.bashrc
+
 complete -F _wclean_completion wclean
