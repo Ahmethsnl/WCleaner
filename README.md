@@ -47,7 +47,40 @@ WCleaner (WesaClean), Linux sistemlerde kullanılmayan önbellekleri, çöp kutu
     * Temizleme işlemi sırasında terminalde ilerleme göstergesi göreceksiniz. İşlem tamamlandığında, temizleme öncesi ve sonrası disk alanı bilgileri görüntülenecektir.
 4. **Wclean**
    * installer.sh komutunu bir kere çalıştırdıktan sonra *wclean* olarak bir alias tanımlanır. Daha açıklayıcı olmak gerekirse terminale yalnızca "*wclean*" yazarak scripti çalıştırabilirsiniz.
-   
+  
+ ## Özellikler
+Çöp kutusu, tarayıcı cache’leri ve tmp klasörlerini temizler
+
+Silinen dosyaları gösterme seçeneği
+
+Temizleme öncesi/sonrası disk alanı ölçümü
+
+Tek komutla çalıştırmak için alias desteği (örn: wclean)
+
+--help ve --version gibi argümanlar
+
+Bash otomatik tamamlama (bash-completion)
+
+## Kurulum
+1. **Depoyu klonla**
+* git clone https://github.com/ahmethsnl/WCleaner.git
+* cd WCleaner
+* chmod +x WesaClean.sh installer.sh
+
+2. **Kurulumu çalıştır**
+./installer.sh
+Bu işlem:
+WCleaner dizinini $HOME/WClean altına kopyalar
+.bashrc veya .zshrc dosyana şu alias'ı ekler:
+alias wclean="$HOME/WClean/WesaClean.sh"
+Terminalini yeniden başlatmayı unutma. Artık sadece wclean yazarak aracı çalıştırabilirsin.
+
+3. **🖥️ Kullanım**
+wclean               # Temizleme işlemini başlatır
+wclean --help        # Yardım mesajı
+wclean --version     # Sürüm bilgisi
+  
+
 ```bash
 WCleaner/
 ├── README.md           
