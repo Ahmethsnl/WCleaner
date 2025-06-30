@@ -6,20 +6,6 @@ WCleaner (WesaClean), Linux sistemlerde kullanılmayan önbellekleri, çöp kutu
 
 ---
 
-## 📁 Klasör Yapısı
-
-   bash
-WCleaner/
-├── README.md           # Bu döküman
-├── LICENSE             # MIT lisansı
-├── WesaClean.sh        # Ana bash script
-├── installer.sh        # Kurulum & alias scripti
-├── docs/
-│   └── usage.md        # Kullanım örnekleri ve açıklamalar
-├── assets/
-│   └── demo.gif        # Terminalde kullanım GIF’i
-├── .bash_completion    # Opsiyonel tamamlayıcı dosya (isteğe bağlı)
-
 # WesaClean Script Açıklaması
 
 **WesaClean** script’i, sisteminizdeki gereksiz dosyaları ve önbellekleri temizlemeye yarayan bir araçtır. Bu script, kullanıcıların belirli dizinlerdeki gereksiz dosyaları silmesine ve böylece sistemlerinde daha fazla alan açmalarına yardımcı olur. Aşağıda script'in nasıl çalıştığını ve kullanıcının yapması gereken adımları bulabilirsiniz.
@@ -61,3 +47,15 @@ WCleaner/
     * Temizleme işlemi sırasında terminalde ilerleme göstergesi göreceksiniz. İşlem tamamlandığında, temizleme öncesi ve sonrası disk alanı bilgileri görüntülenecektir.
 4. **Wclean**
    * installer.sh komutunu bir kere çalıştırdıktan sonra *wclean* olarak bir alias tanımlanır. Daha açıklayıcı olmak gerekirse terminale yalnızca "*wclean*" yazarak scripti çalıştırabilirsiniz.
+   
+```bash
+WCleaner/
+├── README.md           # Bu döküman
+├── LICENSE             # MIT lisansı
+├── WesaClean.sh        # Ana bash script
+├── installer.sh        # Kurulum & alias scripti
+├── docs/
+│   └── usage.md        # Kullanım örnekleri ve açıklamalar
+├── assets/
+│   └── demo.gif        # Terminalde kullanım GIF’i
+├── .bash_completion    # Opsiyonel tamamlayıcı dosya (isteğe bağlı)
