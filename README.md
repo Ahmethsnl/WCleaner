@@ -1,3 +1,5 @@
+[![Last Commit](https://img.shields.io/github/last-commit/ahmethsnl/WCleaner?style=flat)](https://github.com/ahmethsnl/WCleaner/commits)
+
 # WesaClean Script Açıklaması
 
 **WesaClean** script’i, sisteminizdeki gereksiz dosyaları ve önbellekleri temizlemeye yarayan bir araçtır. Bu script, kullanıcıların belirli dizinlerdeki gereksiz dosyaları silmesine ve böylece sistemlerinde daha fazla alan açmalarına yardımcı olur. Aşağıda script'in nasıl çalıştığını ve kullanıcının yapması gereken adımları bulabilirsiniz.
